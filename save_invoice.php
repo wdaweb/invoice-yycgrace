@@ -1,9 +1,18 @@
 <?php
+include "./com/base.php";
 
-echo "period=".$_POST['period']."<br>";
-echo "period=".$_POST['year']."<br>";
-echo "period=".$_POST['code']."<br>";
-echo "period=".$_POST['number']."<br>";
-echo "period=".$_POST['spend']."<br>";
+// 實務上，表單欄位的過濾、安全性、injection:如:
+// $period=stripslashes trim($_POST['period']);
+
+$sql="insert into invoice (`period`,`year`,`code`,`number`,`expend`) values('".$_POST['period']."','".$_POST['year']."','".$_POST['code']."','".$_POST['number']."','".$_POST['expend']."')";
+
+$res=$pdo->exec($sql);
+
+if($res==1){
+    echo "新增成功";
+}else{
+    echo "新增失敗";
+}
+
 
 ?>
