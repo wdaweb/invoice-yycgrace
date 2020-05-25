@@ -4,9 +4,19 @@ include "./com/base.php";
 // 實務上，表單欄位的過濾、安全性、injection:如:
 // $period=stripslashes trim($_POST['period']);
 
-$sql="insert into invoice (`period`,`year`,`code`,`number`,`expend`) values('".$_POST['period']."','".$_POST['year']."','".$_POST['code']."','".$_POST['number']."','".$_POST['expend']."')";
+// $sql="insert into invoice (`period`,`year`,`code`,`number`,`expend`) values('".$_POST['period']."','".$_POST['year']."','".$_POST['code']."','".$_POST['number']."','".$_POST['expend']."')";
+// $res=$pdo->exec($sql);
 
-$res=$pdo->exec($sql);
+
+$data=[
+    'period'=>$_POST['period'],
+    'year'=>$_POST['year'],
+    'code'=>$_POST['code'],
+    'number'=>$_POST['number'],
+    'expend'=>$_POST['expend']
+];
+
+$res=save("invoice",$data);
 
 if($res==1){
     echo "新增成功<br>";

@@ -8,3 +8,9 @@
     border-bottom: 1px solid #999;
     box-shadow: 0 0 5px #ccc;
 }
+.header ul{
+    list-style-type: none;
+}
+.header ul li a{
+
+}

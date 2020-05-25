@@ -34,5 +34,8 @@
     <input type="submit" value="儲存">
 </form>
 
+<a href="list.php">顯示當期發票</a>
+<a href="award.php">對獎GOGO</a>
+<a href="invoice.php">後台輸入獎號</a>
 </body>
 </html>
