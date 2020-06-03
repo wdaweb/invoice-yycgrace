@@ -88,7 +88,11 @@ foreach ($q_invo as $invon){
             ];
 
             // 新增判斷當筆資料是否存在
-            $q_data=find("reward_record",['code'=>$invon['code'],'number'=>$invon['number'],]);
+            $q=[
+                'code'=>$invon['code'],
+                'number'=>$invon['number'],
+            ];
+            $q_data=find("reward_record",$q);
             if(!isset($q_data)){
                 save("reward_record",$data);
             }

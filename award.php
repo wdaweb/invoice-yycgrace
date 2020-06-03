@@ -1,19 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>統一發票管理系統</title>
-    <link rel="stylesheet" href="./css/style.css">
-</head>
-<body>
+
 <?php
     include "./com/base.php";
     include "./include/header.php";
 
-// 如何判別最新已開獎期數?
-// $last_y=find("award_number",);
-// $last_p=find("award_number",);
+// 判別最新已開獎期數
+// 排序是否可以設定兩個欄位的排序組合???如日期+期數
+$last_aw=all("award_number",""," order by id desc limit 0,1");
+
+foreach($last_aw as $d){
+    $last_y=$d['year'];
+    $last_p=$d['period'];
+}
 
 ?>
 
@@ -49,7 +46,7 @@ $aw=[
     9=>'增開獎',
 ];
 
-if(isset($_GET['year']) && isset($_GET['period'])){
+if(!empty($_GET['year']) && !empty($_GET['period'])){
 
     echo "<h2>".$_GET['year']."第".$_GET['period']."期</h2>";
 
