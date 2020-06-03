@@ -2,12 +2,7 @@
 
 include "com/base.php";
 
-
-echo "<pre>";
-print_r($_POST);
-echo "</pre>";
-
-
+$table="award_number";
 $year=$_POST['year'];
 $period=$_POST['period'];
 
@@ -21,6 +16,7 @@ $data=[
 ];
 save($table,$data);
 
+// 特獎
 $num2=$_POST['num2'];
 $data=[
     "year"=>$year,
@@ -30,6 +26,7 @@ $data=[
 ];
 save($table,$data);
 
+// 頭獎
 $num3=$_POST['num3'];
 foreach($num3 as $num){
     $data=[
@@ -41,7 +38,8 @@ foreach($num3 as $num){
     save($table,$data);
 }
 
-$num3=$_POST['num4'];
+// 增開六獎
+$num4=$_POST['num4'];
 foreach($num4 as $num){
     $data=[
         "year"=>$year,
@@ -52,6 +50,8 @@ foreach($num4 as $num){
     save($table,$data);
 }
 
-to("invoice.php");
+// 如何判別，若獎項為空值就不輸入? (如增開六獎)
+
+to("inputaward.php");
 
 ?>

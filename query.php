@@ -7,42 +7,50 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-<?php include "./include/header.php";
+<?php
+include "./include/header.php";
 include "./com/base.php";
 
-$sql="select * from award_number";
-$awards=$pdo->query($sql)->fetchAll();
 
+if(isset($_GET['period'])){
+    $period=$_GET['period'];
+}else{
+    $period=ceil(date("n")/2);
+}
+
+$year=date("Y");
+$awards=all('award_number',['year'=>$year,'period'=>$period]);
 ?>
 
 <nav>
-<div><a href="query.php?period=1">第1期</a></div>
-<div><a href="query.php?period=2">第2期</a></div>
-<div><a href="query.php?period=3">第3期</a></div>
-<div><a href="query.php?period=4">第4期</a></div>
-<div><a href="query.php?period=5">第5期</a></div>
-<div><a href="query.php?period=6">第6期</a></div>
+<a href="query.php?period=1">第1期</a>
+<a href="query.php?period=2">第2期</a>
+<a href="query.php?period=3">第3期</a>
+<a href="query.php?period=4">第4期</a>
+<a href="query.php?period=5">第5期</a>
+<a href="query.php?period=6">第6期</a>
 </nav>
 
-    <table>
+<table>
+    <tr>
+        <td colplas=3><?=$year;?>年<?=$period;?>期</td>
+    </tr>
+    <?php
+    if(!empty($awards)){
+        foreach($awards as $row){
+    ?>
         <tr>
-            <td colplas=3>幾年幾期<?=;?></td>
-        </tr>
-        <?php
-        foreach($award as $row)
-        ?>
-        <tr>
-            <td><?=$row['item'];?></td>
+            <td><?=$row['type'];?></td>
             <td><?=$row['number'];?></td>
-            <td>編輯</td>
+            <td><a herf=""><button>編輯</button></a></td>
         </tr>
-        <?php
+    <?php
         }
-        ?>
-        </table>
-<?php
-$sql="update";
-?>
+    }else{
+        echo "<tr><td>oops!還沒開獎哦!</td></tr>";
+    }
+    ?>
+</table>
 
 </body>
 </html>

@@ -1,7 +1,10 @@
 <div class="header">
 <ul></ul>
-    <li><a href="list.php">發票列表</a></li>
-    <li><a href="invoice.php">各期獎號</a></li>
-    <li><a href="award.php">對獎</a></li>
+    <a href="index.php">LOGO區-回首頁</a>
+    <a href="inputinvo.php">輸入新發票</a>
+    <a href="list.php">發票列表</a>
+    <a href="query.php">各期獎號</a>
+    <a href="award.php">對獎</a>
+    <a href="inputaward.php">輸入獎號</a>
 </ul>
 </div>
