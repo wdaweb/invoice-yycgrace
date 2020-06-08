@@ -14,23 +14,42 @@ foreach($last_aw as $d){
 
 ?>
 
-<h1>對獎專區</h1>
-<h3>小確幸moment!</h3>
-
-<a href="award.php?year=<?=$last_y;?>&period=<?=$last_p;?>">Newest Award</a>
-
-<h3>查詢獎號</h3>
-<form action="award.php" method="get">
-    <input type="number" name="year">
-    <select name="period">
-        <option value="1">一二月</option>
-        <option value="2">三四月</option>
-        <option value="3">五六月</option>
-    </select>
-    <input type="submit" value="查詢獎號">
-</form>
 
 
+
+
+
+
+
+
+<section class="container">
+
+    <article class="contentLeft">
+        <div class="title">對獎專區</div>
+        <h3>小確幸moment!</h3>
+        <div class="search">
+
+            <a href="award.php?year=<?=$last_y;?>&period=<?=$last_p;?>">Newest Award</a>
+
+            <h3>查詢獎號</h3>
+            <form action="award.php" method="get">
+                <input type="number" name="year">
+                <select name="period">
+                    <option value="1">一二月</option>
+                    <option value="2">三四月</option>
+                    <option value="3">五六月</option>
+                </select>
+                <input type="submit" value="查詢獎號">
+            </form>
+
+
+
+
+        </div>
+    </article>
+
+    <article class="contentRight">
+        <div class="result">
 
 <?php
 
@@ -55,9 +74,6 @@ if(!empty($_GET['year']) && !empty($_GET['period'])){
     }
 }
 
-
-
-
 if(isset($_GET['awget'])){
     $tmp=array('id'=>$_GET['awget'],);
     $award_get=find("reward_record",$tmp);
@@ -68,11 +84,38 @@ if(isset($_GET['awget'])){
     echo "$".$award_get['reward'];
 }
 
-// $sql="select * from `invoice` where `period`='."$year".' and `period`='."$period".'";
-// $invoice=$pdo->query($sql)->fetchAll();
-
-
 ?>
+
+
+
+
+        </div>
+    </article>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

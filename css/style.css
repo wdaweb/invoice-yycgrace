@@ -1,22 +1,156 @@
 *{
     margin:0;
     padding: 0;
-    box-sizing: border-box;
 }
-.header{
-    height: 50px;
-    border-bottom: 1px solid #999;
-    box-shadow: 0 0 5px #ccc;
-}
-.header ul{
-    list-style-type: none;
-}
-.header ul li a{
 
+header{
+    width: 100vw;
+    /* height: 10vh; */
+    position: fixed;
+    top:0;
+    left: 0;
+
+    background-color: #fff;
 }
+
+nav{
+    /* float: right; */
+    width: 50px;
+    height: 100vh;
+    position: fixed;
+    top:100px;
+    right: 0;
+}
+
+
+
+.container{
+    margin-top:100px;
+
+    /* border:5px solid #ccc; */
+
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+footer{
+    width: 100vw;
+    height: 30px;
+    background-color: rgba(200,200,200,0.5);
+    /* clear: both; */
+    position: fixed;
+    bottom:0;
+    right: 0;
+
+    /* position: relative; */
+    /* transform-origin: 50px; */
+    /* transform: translate(0 50px); */
+    /* position: fixed; */
+}
+
+
+
+
+
+
+.mainLogo{
+    width: 200px;
+    font-size: 0.8rem;
+    text-align: right;
+}
+
+.navbar>a{
+    height: 80px;
+    text-align: center;
+}
+
+.navbar{
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.5rem;
+    /* padding: 10px; */
+    /* position: fixed; */
+}
+
+
+
+
+
+.contentLeft{
+    /* margin: 0; */
+    width: 300px;
+    /* height: 60vh; */
+    background-color: lightpink;
+    /* float: left; */
+}
+.contentRight{
+    /* margin: 0; */
+    width: 400px;
+    /* height: 60vh; */
+    background-color: lightblue;
+    /* float: right; */
+}
+.title{
+    width: 100px;
+    height: 30px;
+    background-color: red;
+}
+.search{
+    width: 150px;
+    height: 300px;
+    background-color: blue;
+}
+.result{
+    width: 200px;
+    height: 400px;
+    background-color: green;
+}
+
+
+
+
+includeFile:
+header
+nav
+footer
+
+section - article title table
+輸入版型:: section - article - 左側大標title 右側輸入欄位input
+(inputinvo.php)
+(inputaward.php)
+
+輸出版型:: section - article - 左側大標title+searchinput搜尋欄位 右側結果輸出table
+(list.php)
+(query.php)
+
+重點頁面::
+(index.php)
+(award.php)
+
+
+<section class="container">
+
+    <article class="contectLeft">
+        <div class="title"></div>
+        <div class="search">
+
+        </div>
+    </article>
+
+    <article class="contectRight">
+        <div class="result">
+
+        </div>
+    </article>
+
+</section>
+
+
 
 配色
-249-248-247
-228-224-215
-118-178-188
-231-203-192
+main: surf green #126F80
+second: smoky blue #525E76
+bg: bone #DFE4DE
+important: carnation #F95151

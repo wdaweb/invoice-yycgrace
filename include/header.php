@@ -3,18 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Syou Kakkou - receipt lottery</title>
+    <title>Syou Kakkou _ receipt lottery!</title>
+    <link rel="shortcut icon" href="./img/LOGO.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
 
-<div class="header">
-<ul></ul>
-    <a href="index.php">LOGO區-回首頁</a>
-    <a href="inputinvo.php">輸入新發票</a>
-    <a href="list.php">發票列表</a>
-    <a href="query.php">各期獎號</a>
-    <a href="award.php">對獎</a>
-    <a href="inputaward.php">輸入獎號</a>
-</ul>
-</div>
+
+<header>
     
+    <div class="mainLogo">
+        <a href="index.php">
+            <img src="./img/LOGO_name.png" alt="syou kakkou" height="50px">
+            <p>生活中的小確幸，統一發票</p>
+        </a>
+    </div>
+
+</header>
+
+
+
+
+
+
