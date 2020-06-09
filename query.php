@@ -75,10 +75,4 @@ if(!empty($awards)){
 
 </section>
 
-
-
-
-
-
-</body>
-</html>
+<?php include "./include/footer.php";?>

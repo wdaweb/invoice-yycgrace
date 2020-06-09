@@ -1,23 +1,23 @@
 <nav>
     <div class="navbar">
         <a href="award.php">
-            <img src="https://picsum.photos/30/30/?random=1" alt="">
+            <i class="fas fa-award"></i>
             <p>對獎award</P>
         </a>
         <a href="inputinvo.php">
-            <img src="https://picsum.photos/30/30/?random=1" alt="">
+            <i class="fas fa-receipt"></i>
             <p>輸入新發票</P>
         </a>
         <a href="inputaward.php">
-            <img src="https://picsum.photos/30/30/?random=1" alt="">
+            <i class="fas fa-comment-dollar"></i>
             <p>輸入獎號</P>
         </a>
         <a href="list.php">
-            <img src="https://picsum.photos/30/30/?random=1" alt="">
+            <i class="fas fa-list-ol"></i>
             <p>發票列表</P>
         </a>
         <a href="query.php">
-            <img src="https://picsum.photos/30/30/?random=1" alt="">
+        <i class="fas fa-money-check-alt"></i>
             <p>各期獎號</P>
         </a>
     </div>

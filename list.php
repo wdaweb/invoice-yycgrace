@@ -83,9 +83,4 @@ $invoices=$pdo->query($sql)->fetchAll();
 </section>
 
 
-
-
-
-
-</body>
-</html>
+<?php include "./include/footer.php";?>

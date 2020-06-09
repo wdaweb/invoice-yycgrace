@@ -14,9 +14,6 @@ header{
 }
 
 nav{
-    /* float: right; */
-    width: 50px;
-    height: 100vh;
     position: fixed;
     top:100px;
     right: 0;
@@ -66,10 +63,12 @@ footer{
 }
 
 .navbar{
-    display: flex;
-    flex-direction: column;
+    /* display: flex; */
+    /* flex-direction: column; */
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 0.5rem;
+    font-size: 1rem;
+
+    width: 50px;
     /* padding: 10px; */
     /* position: fixed; */
 }
@@ -82,36 +81,37 @@ footer{
     /* margin: 0; */
     width: 300px;
     /* height: 60vh; */
-    background-color: lightpink;
+    background-color: #126F80; 
+    /* #126F80 */
     /* float: left; */
 }
 .contentRight{
     /* margin: 0; */
     width: 400px;
     /* height: 60vh; */
-    background-color: lightblue;
+    background-color: #DFE4DE;
     /* float: right; */
 }
 .title{
     width: 100px;
     height: 30px;
-    background-color: red;
+    background-color: #DFE4DE;
 }
 .search{
     width: 150px;
     height: 300px;
-    background-color: blue;
+    background-color: #525E76;
 }
 .result{
     width: 200px;
     height: 400px;
-    background-color: green;
+    background-color: #525E76;
 }
 
 
 
 
-includeFile:
+/* includeFile:
 header
 nav
 footer
@@ -153,4 +153,4 @@ section - article title table
 main: surf green #126F80
 second: smoky blue #525E76
 bg: bone #DFE4DE
-important: carnation #F95151
+important: carnation #F95151 */

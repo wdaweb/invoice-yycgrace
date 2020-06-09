@@ -95,29 +95,4 @@ if(isset($_GET['awget'])){
 </section>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</body>
-</html>
+<?php include "./include/footer.php";?>
