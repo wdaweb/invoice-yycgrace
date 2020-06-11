@@ -5,12 +5,28 @@
 
 // 判別最新已開獎期數
 // 排序是否可以設定兩個欄位的排序組合???如日期+期數
-$last_aw=all("award_number",""," order by id desc limit 0,1");
 
-foreach($last_aw as $d){
-    $last_y=$d['year'];
-    $last_p=$d['period'];
+
+// 若從前頁接到年月,按鈕會跳轉成馬上開獎
+if(isset($_GET['syear']) && isset($_GET['speriod'])){
+    $qikyear=$_GET['syear'];
+    $qikperiod=$_GET['speriod'];
+    $qikbtn="Quick<br>Check";
+    $qikp="快速對獎點這裡";
+}else{
+    $last_aw=all("award_number",""," order by id desc limit 0,1");
+
+    foreach($last_aw as $d){
+        $last_y=$d['year'];
+        $last_p=$d['period'];
+    }
+
+    $qikyear=$last_y;
+    $qikperiod=$last_p;
+    $qikbtn="Newest<br>Award";
+    $qikp="最新對獎點這裡";
 }
+
 
 ?>
 
@@ -24,12 +40,12 @@ foreach($last_aw as $d){
         <div class="title">對獎專區</div>
         <h4>小確幸moment!</h4>
         <div class="search">
-            <a href="award.php?year=<?=$last_y;?>&period=<?=$last_p;?>">
+            <a href="award.php?year=<?=$qikyear;?>&period=<?=$qikperiod;?>">
                 <div class="awardbtn sub">
-                    <p>Newest<br>Award</p>
+                    <p><?=$qikbtn;?></p>
                 </div>
             </a>
-            <p class="text-muted small mt-3 mb-5">最新開獎點這裡↑</p>
+            <p class="text-muted small mt-3 mb-5"><?=$qikp;?><i class="fas fa-sort-up"></i></p>
 
             <hr>
             <h4>前期對獎</h4>
@@ -103,12 +119,10 @@ if(!empty($_GET['awget'])){
         </div>
     </article>
 
-<article class="moreinfo col-12 text-right mt-5">
-    <div>也許你還想去...(↑)</div>
-    <a href="list.php">顯示當期發票</a><br>
-    <a href="award.php">對獎GOGO</a><br>
-    <a href="inputaward.php">後台輸入獎號</a>
-</article>
+    <article class="moreinfo col-12 text-right mt-5 rslth">
+    <div class="navclr">Quick Link to</div>
+    <!-- award -->
+    </article>
 
 
 

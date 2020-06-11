@@ -68,13 +68,11 @@
         </div>
     </article>
 
-    <article class="moreinfo col-12 text-right">
-    <div>也許你還想去...(↑)</div>
-    <a href="query.php"><button>查看獎號</button></a>
-    <a href="list.php">顯示當期發票</a><br>
-    <a href="award.php">對獎GOGO</a><br>
-    <a href="inputaward.php">後台輸入獎號</a>
-</article>
+    <article class="moreinfo col-12 text-right mt-5 rslth">
+    <div class="navclr">Quick Link to</div>
+    <!-- inputaward -->
+    <a href="query.php?year=<?=$year;?>&period=<?=$period;?>"><td>顯示當期開獎號碼</td></a>
+    </article>
 
 </section>
 

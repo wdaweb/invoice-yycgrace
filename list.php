@@ -97,19 +97,15 @@ $invoices=$pdo->query($sql)->fetchAll();
     <article class="moreinfo col-12 text-right mt-5 rslth">
     <div class="navclr">Quick Link to</div>
     <!-- award -->
-
     <!-- inputinvo -->
-    <a href="list.php"><td>顯示當期發票</td></a>
-    href="list.php?year=<?=$year;?>&period=1"
+    <a href="list.php?year=<?=$year;?>&period=<?=$period;?>"><td>顯示當期發票</td></a>
     <!-- inputaward -->
-    <a href="query.php"><td>顯示當期開獎號碼</td></a>
-    href="query.php?year=<?=$year;?>&period=1"
+    <a href="query.php?year=<?=$year;?>&period=<?=$period;?>"><td>顯示當期開獎號碼</td></a>
     <!-- list -->
-    <a href="award.php"><td>對獎GOGO</td></a>
+    <a href="award.php?syear=<?=$year;?>&speriod=<?=$period;?>"><td>對獎GOGO</td></a>
     <!-- query -->
-    <a href="award.php"><td>對獎GOGO</td></a>
-
-</article>
+    <a href="award.php?syear=<?=$year;?>&speriod=<?=$period;?>"><td>對獎GOGO</td></a>
+    </article>
 
 
 </section>

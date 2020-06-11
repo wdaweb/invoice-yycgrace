@@ -24,7 +24,7 @@
 
 <footer>
     <div class="mt-2">
-    <p class="cpr text-center small mb-2"><i class="fa fa-copyright" aria-hidden="ture"></i> yycgrace</p>
+    <p class="cpr text-center small mb-2"><i class="fa fa-copyright" aria-hidden="ture"></i> 2020 YycGrace</p>
     </div>
 </footer>
 

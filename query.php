@@ -82,12 +82,11 @@ if(!empty($awards)){
         </div>
     </article>
 
-    <article class="moreinfo col-12 text-right">
-    <div>也許你還想去...(↑)</div>
-    <a href="list.php">顯示當期發票</a><br>
-    <a href="award.php">對獎GOGO</a><br>
-    <a href="inputaward.php">後台輸入獎號</a>
-</article>
+    <article class="moreinfo col-12 text-right mt-5 rslth">
+    <div class="navclr">Quick Link to</div>
+    <!-- query -->
+    <a href="award.php?syear=<?=$year;?>&speriod=<?=$period;?>"><td>對獎GOGO</td></a>
+    </article>
 
 
 </section>
