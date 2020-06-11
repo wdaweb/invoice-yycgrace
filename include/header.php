@@ -24,7 +24,7 @@
 
 <header>
     
-    <a href="index.php">
+    <a class="hdt" href="index.php">
     <div class="mainLogo">
             <img src="./img/LOGO_name.png" alt="syou kakkou" height="50px">
             <p class="text-warning mt-1">生活中的小確幸，統一發票</p>

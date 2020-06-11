@@ -1,7 +1,7 @@
 
 <?php
-    include "./com/base.php";
-    include "./include/header.php";
+    include_once "./com/base.php";
+    include_once "./include/header.php";
 
 // 判別最新已開獎期數
 // 排序是否可以設定兩個欄位的排序組合???如日期+期數
@@ -12,7 +12,7 @@ if(isset($_GET['syear']) && isset($_GET['speriod'])){
     $qikyear=$_GET['syear'];
     $qikperiod=$_GET['speriod'];
     $qikbtn="Quick<br>Check";
-    $qikp="快速對獎點這裡";
+    $qikp="<p class='text-warning small mt-3 mb-5'>快速對獎點這裡 ";
 }else{
     $last_aw=all("award_number",""," order by id desc limit 0,1");
 
@@ -24,7 +24,7 @@ if(isset($_GET['syear']) && isset($_GET['speriod'])){
     $qikyear=$last_y;
     $qikperiod=$last_p;
     $qikbtn="Newest<br>Award";
-    $qikp="最新對獎點這裡";
+    $qikp="<p class='text-info small mt-3 mb-5'>最新對獎點這裡 ";
 }
 
 
@@ -45,7 +45,7 @@ if(isset($_GET['syear']) && isset($_GET['speriod'])){
                     <p><?=$qikbtn;?></p>
                 </div>
             </a>
-            <p class="text-muted small mt-3 mb-5"><?=$qikp;?><i class="fas fa-sort-up"></i></p>
+            <?=$qikp;?><i class="fas fa-sort-up"></i></p>
 
             <hr>
             <h4>前期對獎</h4>
@@ -70,7 +70,7 @@ if(isset($_GET['syear']) && isset($_GET['speriod'])){
     </article>
 
     <article class="contentRight col-12 col-md-6">
-    <div class="title">搜尋結果</div> 
+    <div class="title">點點指尖對獎樂</div> 
         <div class="result row">
 
 <?php
@@ -95,38 +95,37 @@ if(!empty($_GET['year']) && !empty($_GET['period'])){
         echo "<div class='chsbar col-12 ml-3'><a class='btn btn-outline-warning' href='check_award.php?aw=".$k."&year=".$_GET['year']."&period=".$_GET['period']."'>".$v."</a></div>";
     }
     echo "</div>";
+    
+
+
+    if(isset($_GET['awget']) && $_GET['awget']=='ops'){
+        echo "<div class='text-warning' style='font-weight:900;font-size:2rem;line-height:3rem;'>沒有發票或獎號</div>";
+    }else if(isset($_GET['awget']) && $_GET['awget']=='none'){
+        echo "<div class='text-warning' style='font-weight:900;font-size:2rem;line-height:3rem;'>c8 c8 c8 沒中獎</div>";
+    }else if(isset($_GET['awget']) && $_GET['awget']=='yep'){
+        $aget=find("reward_record",['id'=> $_GET['awget'],]);
+        echo "<div class='col-6'>";
+        echo "<div class='text-warning' style='font-weight:900;font-size:2rem;line-height:3rem;'>中獎囉</div>";
+        // echo "<div>獎項".$aw[$_GET['aw']]."</div>";
+        // echo "<div>獎號".$aget['code']."-".$aget['number']."</div>";
+        // echo "<div>中獎金額$".$aget['reward']."</div>";
+        // echo "</div>";
+    }
+
+
+
+
 }
 
-if(!empty($_GET['awget'])){
-    $tmp=array('id'=>$_GET['awget'],);
-    $award_get=find("reward_record",$tmp);
-    echo "<div class='col-6'>";
-    echo "<div class='text-warning' style='font-weight:900;font-size:2rem;line-height:3rem;'>中獎囉</div>";
-    echo $aw[$_GET['aw']];
-    echo $award_get['code']."-";
-    echo $award_get['number'];
-    echo "$".$award_get['reward'];
-    echo "</div>";
-}else{
-    echo "<div class='text-warning' style='font-weight:900;font-size:2rem;line-height:3rem;'>c8 c8 c8 沒中獎</div>";
-}
+
 
 ?>
 
-
-
-
         </div>
     </article>
-
-    <article class="moreinfo col-12 text-right mt-5 rslth">
-    <div class="navclr">Quick Link to</div>
-    <!-- award -->
-    </article>
-
 
 
 </section>
 
 
-<?php include "./include/footer.php";?>
+<?php include_once "./include/footer.php";?>

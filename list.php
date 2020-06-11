@@ -1,6 +1,6 @@
 <?php 
-include "./com/base.php";
-include "./include/header.php";
+include_once "./com/base.php";
+include_once "./include/header.php";
 ?>
 
 
@@ -11,10 +11,31 @@ include "./include/header.php";
         <div class="title">發票列表</div>
         <h4>My Invoice List</h4>
         <div class="search">
+<?php 
+
+if(isset($_GET['year'])){
+    $year=$_GET['year'];
+    $rslti="搜尋結果";
+}else{
+    $year=date("Y");
+    $rslti="近期發票";
+}
+
+if(isset($_GET['period'])){
+    $period=$_GET['period'];
+    $rslti="搜尋結果";
+}else{
+    $period=ceil(date("n")/2);
+    $rslti="近期發票";
+}
+
+$invoices=all('invoice',['year'=>$year,'period'=>$period,]);
+    
+?>
 
         <!-- 這裡放一個年份選擇欄,預設$year=date("Y") -->
-        <form action="?" method="get">
-        <input type="text">
+        <form class="my-3" action="list.php" method="get">
+        <input type="text" name="year" size="3">
         <input class="sub" type="submit" value="search">
         </form>
 
@@ -29,30 +50,11 @@ include "./include/header.php";
             </div>
 
 
-<?php 
-if(isset($_GET['year'])){
-    $period=$_GET['year'];
-}else{
-    $period=ceil(date("n")/2);
-}
-
-if(isset($_GET['period'])){
-    $period=$_GET['period'];
-}else{
-    $year=date("Y");
-}
-
-$sql="select * from invoice where `period`='$period' `period`='$year'";
-$invoices=$pdo->query($sql)->fetchAll();
-    
-?>
-
-
         </div>
     </article>
 
     <article class="contentRight col-12 col-md-6">
-    <div class="title">搜尋結果</div> 
+    <div class="title"><?=$rslti;?></div> 
         <div class="result container">
 
             <table>
@@ -84,31 +86,17 @@ $invoices=$pdo->query($sql)->fetchAll();
     ?>
             </table>
 
-
-
-
-
-
-
-
         </div>
     </article>
 
     <article class="moreinfo col-12 text-right mt-5 rslth">
-    <div class="navclr">Quick Link to</div>
-    <!-- award -->
-    <!-- inputinvo -->
-    <a href="list.php?year=<?=$year;?>&period=<?=$period;?>"><td>顯示當期發票</td></a>
-    <!-- inputaward -->
-    <a href="query.php?year=<?=$year;?>&period=<?=$period;?>"><td>顯示當期開獎號碼</td></a>
+    <div class="navclr ql">Quick Link to</div>
     <!-- list -->
-    <a href="award.php?syear=<?=$year;?>&speriod=<?=$period;?>"><td>對獎GOGO</td></a>
-    <!-- query -->
-    <a href="award.php?syear=<?=$year;?>&speriod=<?=$period;?>"><td>對獎GOGO</td></a>
+    <a class="btn btn-sm btn-outline-danger" href="award.php?syear=<?=$year;?>&speriod=<?=$period;?>">對獎GOGO</a>
     </article>
 
 
 </section>
 
 
-<?php include "./include/footer.php";?>
+<?php include_once "./include/footer.php";?>

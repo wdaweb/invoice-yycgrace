@@ -28,6 +28,7 @@ header{
 
 .content{
     margin-top:110px;
+    margin-bottom: 50px;
     margin-right: 90px;
     margin-left: 0;
 
@@ -50,7 +51,9 @@ footer{
     font-family: 'Montserrat', sans-serif;
 }
 
-
+.hdt{
+    text-decoration: none!important;
+}
 
 
 
@@ -68,14 +71,31 @@ footer{
 .navbar>a{
     text-align: center;
     margin-top: 5px;
+    text-decoration: none!important;
+}
+.navbar>a:hover,
+.ql:hover{
+    text-shadow: 3px 6px 2px #DFE4DE;
 }
 
 .navclr{
     color:#126F80!important;
 }
 
+.ql{
+    color:#F95151!important;
+    font-weight: 800;
+    text-shadow: 4px 0px 0px #F9515155;
+    margin-bottom: 8px;
+}
 
 
+h4{
+    color: #126F80;
+    font-weight: 800;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
 
 
 .contentLeft{
@@ -107,7 +127,7 @@ footer{
 }
 
 .chsbar>a{
-    margin: 8px 5px;
+    margin: 20px 5px 0px 5px;
 }
 
 input{

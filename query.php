@@ -1,25 +1,37 @@
 <?php
-include "./include/header.php";
-include "./com/base.php";
+include_once "./include/header.php";
+include_once "./com/base.php";
+
+$last_aw=all("award_number",""," order by id desc limit 0,1");
+
+foreach($last_aw as $d){
+    $last_y=$d['year'];
+    $last_p=$d['period'];
+}
+
 
 if(isset($_GET['year'])){
-    $period=$_GET['year'];
+    $year=$_GET['year'];
+    $rslti="搜尋結果";
 }else{
-    $period=ceil(date("n")/2);
+    $year=$last_y;
+    $rslti="最新獎號";
 }
 
 if(isset($_GET['period'])){
     $period=$_GET['period'];
+    $rslti="搜尋結果";
 }else{
-    $period=ceil(date("n")/2);
+    $period=$last_p;
+    $rslti="最新獎號";
 }
 
+
+
 $awards=all('award_number',['year'=>$year,'period'=>$period]);
+
+
 ?>
-
-
-
-
 <section class="content row fixed">
 
     <article class="contentLeft col-12 col-md-6">
@@ -28,6 +40,10 @@ $awards=all('award_number',['year'=>$year,'period'=>$period]);
         <div class="search">
 
         <!-- 這裡放一個年份選擇欄,預設$year=date("Y") -->
+        <form class="my-3" action="query.php" method="get">
+        <input type="text" name="year" size="3">
+        <input class="sub" type="submit" value="search">
+        </form>
 
             <div class="chsbar">
                 <a class="btn btn-sm btn-outline-secondary" href="query.php?year=<?=$year;?>&period=1">第1期</a>
@@ -45,7 +61,7 @@ $awards=all('award_number',['year'=>$year,'period'=>$period]);
     </article>
 
     <article class="contentRight col-12 col-md-6">
-    <div class="title">搜尋結果</div> 
+    <div class="title"><?=$rslti;?></div> 
         <div class="result container">
 
         <table>
@@ -83,12 +99,12 @@ if(!empty($awards)){
     </article>
 
     <article class="moreinfo col-12 text-right mt-5 rslth">
-    <div class="navclr">Quick Link to</div>
+    <div class="navclr ql">Quick Link to</div>
     <!-- query -->
-    <a href="award.php?syear=<?=$year;?>&speriod=<?=$period;?>"><td>對獎GOGO</td></a>
+    <a class="btn btn-sm btn-outline-danger" href="award.php?syear=<?=$year;?>&speriod=<?=$period;?>">對獎GOGO</a>
     </article>
 
 
 </section>
 
-<?php include "./include/footer.php";?>
+<?php include_once "./include/footer.php";?>

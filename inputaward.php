@@ -1,5 +1,5 @@
 
-    <?php include "./include/header.php";?>
+    <?php include_once "./include/header.php";?>
 
 
     <section class="content row fixed">
@@ -61,19 +61,39 @@
 
     </article>
 
-    <article class="contentRight col-12 col-md-6">
-    <div class="title">統一發票小知識_開獎篇</div> 
-        <div class="result">
+<?php
+// 如果addaward傳回值
+if(isset($_GET['year']) && isset($_GET['period'])){
+    $title="新增成功 Save Success";
+    $result=$_GET['year']."年第".$_GET['period']."期加入資料庫囉";
+}else if(isset($_GET['year']) && isset($_GET['period']) && $_GET['year']==1 && $_GET['period']==1){
+    $title="新增失敗 Save False";
+    $result="請重新輸入";
+}else{
+    $title="統一發票小知識_開獎篇";
+    $result="Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis sunt est eos magnam doloribus aspernatur iure veritatis quaerat alias repellendus beatae iste tempore harum expedita odit necessitatibus recusandae, explicabo, excepturi quasi mollitia eveniet asperiores optio! Rem iste, animi nesciunt culpa doloribus quod blanditiis a, eligendi aut soluta, ad atque dolor? Maiores, minus.";
+}
 
+?>
+    <article class="contentRight col-12 col-md-6">
+    <div class="title"><?=$title;?></div> 
+        <div class="result">
+        <p class="container mt-3"><?=$result;?></p>
         </div>
     </article>
 
+<?php
+if(isset($_GET['year']) && isset($_GET['period'])){
+?>
     <article class="moreinfo col-12 text-right mt-5 rslth">
-    <div class="navclr">Quick Link to</div>
+    <div class="navclr ql">Quick Link to</div>
     <!-- inputaward -->
-    <a href="query.php?year=<?=$year;?>&period=<?=$period;?>"><td>顯示當期開獎號碼</td></a>
+    <a class="btn btn-sm btn-outline-danger" href="query.php?year=<?=$_GET['year'];?>&period=<?=$_GET['period'];?>">顯示當期開獎號碼</a>
     </article>
+<?php
+}
+?>
 
 </section>
 
-<?php include "./include/footer.php";?>
+<?php include_once "./include/footer.php";?>
