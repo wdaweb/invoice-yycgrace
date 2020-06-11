@@ -107,6 +107,8 @@ foreach ($q_invo as $invon){
             // $_COOKIE[$awget];
             header("location:award.php?aw=$aw&year=$year&period=$period&aw=$aw&awget=$id");
             
+        }else{
+            header("location:award.php?aw=$aw&year=$year&period=$period&aw=$aw&awget=0");
         }
 
         // echo "<hr>";

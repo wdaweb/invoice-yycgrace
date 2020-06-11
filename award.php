@@ -18,28 +18,33 @@ foreach($last_aw as $d){
 
 
 
+<section class="content row fixed">
 
-
-
-
-<section class="container">
-
-    <article class="contentLeft">
+    <article class="contentLeft col-12 col-md-6">
         <div class="title">對獎專區</div>
-        <h3>小確幸moment!</h3>
+        <h4>小確幸moment!</h4>
         <div class="search">
+            <a href="award.php?year=<?=$last_y;?>&period=<?=$last_p;?>">
+                <div class="awardbtn sub">
+                    <p>Newest<br>Award</p>
+                </div>
+            </a>
+            <p class="text-muted small mt-3 mb-5">最新開獎點這裡↑</p>
 
-            <a href="award.php?year=<?=$last_y;?>&period=<?=$last_p;?>">Newest Award</a>
-
-            <h3>查詢獎號</h3>
+            <hr>
+            <h4>前期對獎</h4>
             <form action="award.php" method="get">
-                <input type="number" name="year">
-                <select name="period">
-                    <option value="1">一二月</option>
-                    <option value="2">三四月</option>
-                    <option value="3">五六月</option>
-                </select>
-                <input type="submit" value="查詢獎號">
+                <div class="srchgp">
+                <input type="text" name="year" size="3">
+                    <select name="period">
+                        <option value="1">一二月</option>
+                        <option value="2">三四月</option>
+                        <option value="3">五六月</option>
+                    </select>
+                </div>
+                <div class="srchgp">
+                    <input class="sub" type="submit" value="Go!">
+                </div>
             </form>
 
 
@@ -48,8 +53,9 @@ foreach($last_aw as $d){
         </div>
     </article>
 
-    <article class="contentRight">
-        <div class="result">
+    <article class="contentRight col-12 col-md-6">
+    <div class="title">搜尋結果</div> 
+        <div class="result row">
 
 <?php
 
@@ -67,21 +73,26 @@ $aw=[
 
 if(!empty($_GET['year']) && !empty($_GET['period'])){
 
-    echo "<h2>".$_GET['year']."第".$_GET['period']."期</h2>";
-
+    echo "<h4 class='col-12'>".$_GET['year']."第".$_GET['period']."期</h4>";
+    echo "<div class='row col-6'>";
     foreach($aw as $k=>$v){
-        echo "<a href='check_award.php?aw=".$k."&year=".$_GET['year']."&period=".$_GET['period']."'>".$v."</a>";
+        echo "<div class='chsbar col-12 ml-3'><a class='btn btn-outline-warning' href='check_award.php?aw=".$k."&year=".$_GET['year']."&period=".$_GET['period']."'>".$v."</a></div>";
     }
+    echo "</div>";
 }
 
-if(isset($_GET['awget'])){
+if(!empty($_GET['awget'])){
     $tmp=array('id'=>$_GET['awget'],);
     $award_get=find("reward_record",$tmp);
-    echo "<div>中獎囉</div>";
+    echo "<div class='col-6'>";
+    echo "<div class='text-warning' style='font-weight:900;font-size:2rem;line-height:3rem;'>中獎囉</div>";
     echo $aw[$_GET['aw']];
     echo $award_get['code']."-";
     echo $award_get['number'];
     echo "$".$award_get['reward'];
+    echo "</div>";
+}else{
+    echo "<div class='text-warning' style='font-weight:900;font-size:2rem;line-height:3rem;'>c8 c8 c8 沒中獎</div>";
 }
 
 ?>
@@ -91,6 +102,15 @@ if(isset($_GET['awget'])){
 
         </div>
     </article>
+
+<article class="moreinfo col-12 text-right mt-5">
+    <div>也許你還想去...(↑)</div>
+    <a href="list.php">顯示當期發票</a><br>
+    <a href="award.php">對獎GOGO</a><br>
+    <a href="inputaward.php">後台輸入獎號</a>
+</article>
+
+
 
 </section>
 

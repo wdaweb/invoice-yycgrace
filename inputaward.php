@@ -2,74 +2,79 @@
     <?php include "./include/header.php";?>
 
 
-    <section class="container">
+    <section class="content row fixed">
         
-        <article class="contentLeft">
-            <div class="title"></div>
+        <article class="contentLeft col-12 col-md-6">
+            <div class="title">輸入獎號</div>
             <div class="search">
                 
                 <form action="add_award.php" method="post">
-                    <table>
+                    <table class="mr-0 ml-auto">
                         <tr>
-                            <td>年月份</td>
+                            <td class="srchth">年期別</td>
                             <td>
-                                <input type="text" name="year" id="">
+                                <input class="srchgp" type="text" name="year" id="" size="1">
                                 <select name="period">
-                                    <option value="1">1,2月</option>
-                                    <option value="2">3,4月</option>
-                                    <option value="3">5,6月</option>
-                                    <option value="4">7,8月</option>
-                                    <option value="5">9,10月</option>
-                                    <option value="6">11,12月</option>
+                                    <option value="1">第1期</option>
+                                    <option value="2">第2期</option>
+                                    <option value="3">第3期</option>
+                                    <option value="4">第4期</option>
+                                    <option value="5">第5期</option>
+                                    <option value="6">第6期</option>
                                 </select>
                     
                             </td>
                         </tr>
                         <tr>
-                            <td>特別獎</td>
+                            <td class="srchth">特別獎</td>
                             <td>        
-                                <input type="number" name="num1">
+                                <input class="srchgp" type="text" name="num1" size="3">
                             </td>
                         </tr>
                         <tr>
-                            <td>特獎</td>
+                            <td class="srchth">特獎</td>
                             <td>
-                                <input type="number" name="num2">
+                                <input class="srchgp" type="text" name="num2" size="3">
                             </td>
                         </tr>
                         <tr>
-                            <td>頭獎</td>
+                            <td class="srchth">頭獎</td>
                             <td>
-                                <input type="number" name="num3[]">
-                                <input type="number" name="num3[]">
-                                <input type="number" name="num3[]">
+                                <input class="srchgp" type="text" name="num3[]" size="3">
+                                <input type="text" name="num3[]" size="3">
+                                <input type="text" name="num3[]" size="3">
                             </td>
                         </tr>
                         <tr>
-                            <td>增開六獎</td>
+                            <td class="srchth">增開六獎</td>
                             <td>
-                                <input type="text" name="num4[]">
-                                <input type="text" name="num4[]">
-                                <input type="text" name="num4[]">
+                                <input class="srchgp" type="text" name="num4[]" size="3">
+                                <input type="text" name="num4[]" size="3">
+                                <input type="text" name="num4[]" size="3">
                             </td>
                         </tr>
                     </table>
-                <input type="submit" value="submit">
+                    <input class="sub" type="submit" value="save">
                 </form>
 
         </div>
 
-
-        
-        <a href="query.php"><button>查看獎號</button></a>
-
     </article>
 
-    <article class="contentRight">
+    <article class="contentRight col-12 col-md-6">
+    <div class="title">統一發票小知識_開獎篇</div> 
         <div class="result">
 
         </div>
     </article>
+
+    <article class="moreinfo col-12 text-right">
+    <div>也許你還想去...(↑)</div>
+    <a href="query.php"><button>查看獎號</button></a>
+    <a href="list.php">顯示當期發票</a><br>
+    <a href="award.php">對獎GOGO</a><br>
+    <a href="inputaward.php">後台輸入獎號</a>
+</article>
 
 </section>
 
