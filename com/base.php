@@ -1,6 +1,13 @@
 <?php
+// // wdaserver (http://220.128.133.15/PMA/)
+// $dsn="mysql:host=localhost;charset=utf8;dbname=s1090214";
+// $pdo=new PDO($dsn,'s1090214',"s1090214");
+
+// course Computer & yyc's NB
 $dsn="mysql:host=localhost;charset=utf8;dbname=invoice";
 $pdo=new PDO($dsn,'root',"");
+
+
 date_default_timezone_set("Asia/Taipei");
 session_start();
 
@@ -10,7 +17,7 @@ function all($table,...$arg){
     global $pdo;
     $sql="select * from $table ";
     
-    if(isset($arg[0]) && is_array($arg[0])){
+    if(isset($arg[0]) && is_array($arg[0])){ 
         $tmp=[];
         foreach($arg[0] as $key => $value){
             $tmp[]=sprintf("`%s`='%s'",$key,$value);

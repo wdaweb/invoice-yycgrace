@@ -2,7 +2,7 @@
 include_once "./include/header.php";
 include_once "./com/base.php";
 
-$last_aw=all("award_number",""," order by id desc limit 0,1");
+$last_aw=all("invo_award_number",""," order by id desc limit 0,1");
 
 foreach($last_aw as $d){
     $last_y=$d['year'];
@@ -28,7 +28,7 @@ if(isset($_GET['period'])){
 
 
 
-$awards=all('award_number',['year'=>$year,'period'=>$period]);
+$awards=all('invo_award_number',['year'=>$year,'period'=>$period]);
 
 
 ?>
@@ -41,7 +41,7 @@ $awards=all('award_number',['year'=>$year,'period'=>$period]);
 
         <!-- 這裡放一個年份選擇欄,預設$year=date("Y") -->
         <form class="my-3" action="query.php" method="get">
-        <input type="text" name="year" size="3">
+        <input type="number" name="year" value="<?=date("Y");?>" style="width: 70px;font-weight: 600;color: #126F80;">
         <input class="sub" type="submit" value="search">
         </form>
 
@@ -72,6 +72,13 @@ $awards=all('award_number',['year'=>$year,'period'=>$period]);
             </tr>
 
 <?php
+$aw=[
+    1=>'特別獎',
+    2=>'特獎',
+    3=>'頭獎',
+    4=>'增開獎',
+];
+
 if(!empty($awards)){
 ?>
             <tr class="rslth">
@@ -83,7 +90,7 @@ if(!empty($awards)){
     foreach($awards as $row){
 ?>
             <tr class="rsl">
-                <td class="cpr"><?=$row['type'];?></td>
+                <td><?=$aw[$row['type']];?></td>
                 <td><?=$row['number'];?></td>
                 <td><button class="cpr btn btn-sm btn-outline-warning py-0">edit</button></td>
             </tr>

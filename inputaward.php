@@ -13,7 +13,7 @@
                         <tr>
                             <td class="srchth">年期別</td>
                             <td>
-                                <input class="srchgp" type="text" name="year" id="" size="1">
+                                <input class="srchgp"  type="number" name="year" value="<?=date("Y");?>" style="width: 70px;font-weight: 600;color: #126F80;">
                                 <select name="period">
                                     <option value="1">第1期</option>
                                     <option value="2">第2期</option>
@@ -63,15 +63,15 @@
 
 <?php
 // 如果addaward傳回值
-if(isset($_GET['year']) && isset($_GET['period'])){
+if(isset($_GET['year']) && isset($_GET['period']) && $_GET['year']=='ops' && $_GET['period']=='ops'){
+    $title="新增失敗 Save False";
+    $result="請重新輸入，年期別不得為空";
+}else if(isset($_GET['year']) && isset($_GET['period'])){
     $title="新增成功 Save Success";
     $result=$_GET['year']."年第".$_GET['period']."期加入資料庫囉";
-}else if(isset($_GET['year']) && isset($_GET['period']) && $_GET['year']==1 && $_GET['period']==1){
-    $title="新增失敗 Save False";
-    $result="請重新輸入";
 }else{
     $title="統一發票小知識_開獎篇";
-    $result="Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis sunt est eos magnam doloribus aspernatur iure veritatis quaerat alias repellendus beatae iste tempore harum expedita odit necessitatibus recusandae, explicabo, excepturi quasi mollitia eveniet asperiores optio! Rem iste, animi nesciunt culpa doloribus quod blanditiis a, eligendi aut soluta, ad atque dolor? Maiores, minus.";
+    $result="你知道嗎?<br><strong>中大獎怎麼辦</strong><br>當消費項目很多的時候，往往會拿到好幾張相連且號碼連號的統一發票。<br>相信大家都知道每張都可以獨立對獎，但如果其中一張中獎的時候，要帶哪張去領獎呢?<br>要特別注意!如果你幸運中大獎的話，要全部出示才可以領獎哦!";
 }
 
 ?>

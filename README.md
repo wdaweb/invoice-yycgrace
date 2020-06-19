@@ -37,26 +37,33 @@
    - 按下某期的按鈕會顯示該期的獎號
    - 有一個編輯的按鈕，按下後可以編輯該期別的獎號
 ## 資料庫設計
-1. 發票資料表-invoice
+1. 發票資料表-invo_invoice
+   - id || INT || 10 || 無 || UNSIGNED || A_I
+   - year || INT || 4 || 無 ||  ||
+   - period || TINYINT || 1 || 無 ||  ||
+   - code || VARCHAR || 2 || 無 ||  ||
+   - number || INT || 8 || 無 ||  ||
+   - expend || INT || 10 || 無 ||  ||
+2. 獎號資料表- invo_award_number
+   - id || INT || 10 || 無 || UNSIGNED || A_I
+   - year || INT || 4 || 無 ||  ||
+   - period || TINYINT || 1 || 無 ||  ||
+   - number || INT || 8 || 無 ||  ||
+   - type || VARCHAR || 10 || 無 ||  ||
+3. 中獎紀錄表- invo_reward_record
    - id
+   - year
+   - period
    - code
    - number
-   - period
    - expend
-   - year
-2. 獎號資料表- award_number
-   - id
-   - year
-   - period
-   - number
-   - item(type)
-3. 中獎紀錄表- reward_record
-   - id
-   - number
-   - period
-   - reward
-   - expend
-   - year
+   - reward || VARCHAR || 8 || 無 ||  ||
+   - (是不是只需要id 發票資料表id reward就好?)
+   - 
+   - id || INT || 10 || 無 || UNSIGNED || A_I
+   - invo_id || INT || 10 || 無 ||  ||
+   - 獎項 prize || VARCHAR || 8 || 無 ||  ||
+   - 獎金 bonus || INT || 10 || 無 ||  ||
 ## 程式功能設計
 1. 接收發票號並存入資料庫
 2. 接收獎號並存入資料庫

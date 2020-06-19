@@ -2,9 +2,11 @@
 
 include_once "com/base.php";
 
-if(isset($_POST)){
+// count()
 
-    $table="award_number";
+if($_POST['year']!=0){
+
+    $table="invo_award_number";
     $year=$_POST['year'];
     $period=$_POST['period'];
     
@@ -57,7 +59,7 @@ if(isset($_POST)){
     to("inputaward.php?year=$year&period=$period");
 
 }else{
-    to("inputaward.php?year=1&period=1");
+    to("inputaward.php?year=ops&period=ops");
 }
 
 

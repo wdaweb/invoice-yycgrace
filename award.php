@@ -11,10 +11,10 @@
 if(isset($_GET['syear']) && isset($_GET['speriod'])){
     $qikyear=$_GET['syear'];
     $qikperiod=$_GET['speriod'];
-    $qikbtn="Quick<br>Check";
+    $qikbtn="<div class='awardbtn sub2'><p>Quick<br>Check</p></div>";
     $qikp="<p class='text-warning small mt-3 mb-5'>快速對獎點這裡 ";
 }else{
-    $last_aw=all("award_number",""," order by id desc limit 0,1");
+    $last_aw=all("invo_award_number",""," order by id desc limit 0,1");
 
     foreach($last_aw as $d){
         $last_y=$d['year'];
@@ -23,7 +23,7 @@ if(isset($_GET['syear']) && isset($_GET['speriod'])){
 
     $qikyear=$last_y;
     $qikperiod=$last_p;
-    $qikbtn="Newest<br>Award";
+    $qikbtn="<div class='awardbtn sub'><p>Newest<br>Award</p></div>";
     $qikp="<p class='text-info small mt-3 mb-5'>最新對獎點這裡 ";
 }
 
@@ -41,9 +41,7 @@ if(isset($_GET['syear']) && isset($_GET['speriod'])){
         <h4>小確幸moment!</h4>
         <div class="search">
             <a href="award.php?year=<?=$qikyear;?>&period=<?=$qikperiod;?>">
-                <div class="awardbtn sub">
-                    <p><?=$qikbtn;?></p>
-                </div>
+                <?=$qikbtn;?>
             </a>
             <?=$qikp;?><i class="fas fa-sort-up"></i></p>
 
@@ -51,20 +49,21 @@ if(isset($_GET['syear']) && isset($_GET['speriod'])){
             <h4>前期對獎</h4>
             <form action="award.php" method="get">
                 <div class="srchgp">
-                <input type="text" name="year" size="3">
+                <input type="number" name="year" value="<?=date("Y");?>" style="width: 70px;font-weight: 600;color: #126F80;">
+                <!-- <input type="text" name="year" size="3"> -->
                     <select name="period">
-                        <option value="1">一二月</option>
-                        <option value="2">三四月</option>
-                        <option value="3">五六月</option>
+                        <option value="1">1,2月</option>
+                        <option value="2">3,4月</option>
+                        <option value="3">5,6月</option>
+                        <option value="4">7,8月</option>
+                        <option value="5">9,10月</option>
+                        <option value="6">11,12月</option>
                     </select>
                 </div>
                 <div class="srchgp">
                     <input class="sub" type="submit" value="Go!">
                 </div>
             </form>
-
-
-
 
         </div>
     </article>
@@ -96,34 +95,75 @@ if(!empty($_GET['year']) && !empty($_GET['period'])){
     }
     echo "</div>";
     
-
-
-    if(isset($_GET['awget']) && $_GET['awget']=='ops'){
-        echo "<div class='text-warning' style='font-weight:900;font-size:2rem;line-height:3rem;'>沒有發票或獎號</div>";
-    }else if(isset($_GET['awget']) && $_GET['awget']=='none'){
-        echo "<div class='text-warning' style='font-weight:900;font-size:2rem;line-height:3rem;'>c8 c8 c8 沒中獎</div>";
-    }else if(isset($_GET['awget']) && $_GET['awget']=='yep'){
-        $aget=find("reward_record",['id'=> $_GET['awget'],]);
-        echo "<div class='col-6'>";
-        echo "<div class='text-warning' style='font-weight:900;font-size:2rem;line-height:3rem;'>中獎囉</div>";
-        // echo "<div>獎項".$aw[$_GET['aw']]."</div>";
-        // echo "<div>獎號".$aget['code']."-".$aget['number']."</div>";
-        // echo "<div>中獎金額$".$aget['reward']."</div>";
-        // echo "</div>";
-    }
-
-
-
-
-}
-
-
-
 ?>
+
+<div class="col-6">
+<button class="btn btn-warning mt-5"><p class="text-white">還沒做的一口氣快速對獎</p></button>
+
+<?php
+
+
+    if(isset($_GET['awget'])){
+?>
+    <div class='text-warning col-12 mt-5'>
+    <?php    
+        switch ($_GET['awget']){
+            case 'opsa':
+                echo "<div style='font-weight:900;font-size:2rem;line-height:3rem;'>還沒開獎哦</div>";
+            break;
+            case 'opsi':
+                echo "<div style='font-weight:900;font-size:2rem;line-height:3rem;'>當期沒有發票紀錄</div>";
+            break;
+            case 'yep':
+                echo "<div style='font-weight:900;font-size:2rem;line-height:3rem;'>中獎囉</div>";
+?>                
+        <table>
+        <tr class="rslth">
+            <td style="width:15%;">獎項</td>
+            <td style="width:15%;">標記</td>
+            <td style="width:20%;">號碼</td>
+            <td style="width:20%;">獎金</td>            
+        </tr>
+        <?php
+        $reward_invo=all('invo_reward_record',['year'=>$_GET['year'],'period'=>$_GET['period'],]);
+
+        foreach($reward_invo as $rrow){
+        ?>
+        <tr class="rsl">
+            <td><?=$rrow['prize'];?></td>
+        <?php
+            $invo=all('invo_invoice',['id'=>$rrow['invo_id'],]);
+            foreach($invo as $irow){
+        ?>
+            <td><?=$irow['code'];?></td>
+            <td><?=$irow['number'];?></td>
+        <?php
+            }
+        ?>
+            <td class="cpr"><?=$rrow['bonus'];?></td>
+
+        </tr>
+        <?php
+        }
+        
+        ?>
+        </table>
+<?php
+            break;
+            case 'none':
+                echo "<div style='font-weight:900;font-size:2rem;line-height:3rem;'>c8 c8 沒中獎</div>";
+            break;
+
+        }
+    }
+}
+?>
+    </div>
+</div>
+
 
         </div>
     </article>
-
 
 </section>
 

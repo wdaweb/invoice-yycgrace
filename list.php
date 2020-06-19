@@ -29,13 +29,13 @@ if(isset($_GET['period'])){
     $rslti="近期發票";
 }
 
-$invoices=all('invoice',['year'=>$year,'period'=>$period,]);
+$invoices=all('invo_invoice',['year'=>$year,'period'=>$period,]);
     
 ?>
 
         <!-- 這裡放一個年份選擇欄,預設$year=date("Y") -->
         <form class="my-3" action="list.php" method="get">
-        <input type="text" name="year" size="3">
+        <input type="number" name="year" value="<?=date("Y");?>" style="width: 70px;font-weight: 600;color: #126F80;">
         <input class="sub" type="submit" value="search">
         </form>
 

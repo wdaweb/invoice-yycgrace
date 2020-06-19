@@ -12,11 +12,7 @@
         <tr>
             <td class="srchth">年月份</td>
             <td>
-                <select class="srchgp" name="year">
-                    <option value="2020">2020</option>
-                    <option value="2021">2021</option>
-                    <option value="2022">2022</option>
-                </select>
+                <input class="srchgp" type="number" name="year" value="<?=date("Y");?>" style="width: 70px;font-weight: 600;color: #126F80;">
                 <select name="period">
                     <option value="1">1,2月</option>
                     <option value="2">3,4月</option>
@@ -48,15 +44,15 @@
 </article>
 
 <?php
-if(isset($_GET['year']) && isset($_GET['period'])){
+if(isset($_GET['year']) && isset($_GET['period']) && $_GET['year']=='ops' && $_GET['period']=='ops'){
+    $title="新增失敗 Save False";
+    $result="請重新輸入，年月份不得為空";
+}else if(isset($_GET['year']) && isset($_GET['period'])){
     $title="新增成功 Save Success";
     $result="發票加入".$_GET['year']."年第".$_GET['period']."期資料庫囉";
-}else if(isset($_GET['year']) && isset($_GET['period']) && $_GET['year']==1 && $_GET['period']==1){
-    $title="新增失敗 Save False";
-    $result="請重新輸入";
 }else{
     $title="統一發票小知識_發票篇";
-    $result="Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis sunt est eos magnam doloribus aspernatur iure veritatis quaerat alias repellendus beatae iste tempore harum expedita odit necessitatibus recusandae, explicabo, excepturi quasi mollitia eveniet asperiores optio! Rem iste, animi nesciunt culpa doloribus quod blanditiis a, eligendi aut soluta, ad atque dolor? Maiores, minus. Magnam beatae, nihil ut dignissimos corporis dolores dolorem excepturi neque labore soluta ullam minus unde vitae doloremque at distinctio natus veniam voluptate possimus qui id rem nesciunt.";
+    $result="你知道嗎? 傳統式的紙本發票有錯字?<br><strong>神祕的防弊措施</strong><br>為了防範有心人士偽造中獎發票，傳統式發票裡有一項非常特別的防弊措施，就藏在發票第一行的字裡行間。<br>每一期的傳統發票中，第一行的字樣中都有其中一個字少了一個筆劃，而且期期不同。<br>這個特別的設定如果不說出來，相信很多人到現在都還沒發現呢!";
 }
 ?>
 

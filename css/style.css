@@ -9,7 +9,7 @@ header{
     top:0;
     z-index: 3;
     
-    background-color: #fff;
+    background-color: #126F80;
 }
 
 .navbar{
@@ -34,6 +34,7 @@ header{
 
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 
@@ -54,8 +55,6 @@ footer{
 .hdt{
     text-decoration: none!important;
 }
-
-
 
 
 .mainLogo{
@@ -99,15 +98,11 @@ h4{
 
 
 .contentLeft{
-    background-color:; 
-
     display: inline-block;
     text-align: right;
     margin-bottom: 30px;
 }
 .contentRight{
-    background-color:;
-    
     display: inline-block;
     text-align: left;
 }
@@ -133,8 +128,8 @@ h4{
 input{
     border: 1px solid #126F8033;
     border-radius: 5px;
-
 }
+
 select{
     border: 1px solid #126F8033;
     border-radius: 5px;
@@ -145,6 +140,13 @@ select{
     border: 2px solid #F9515133;
     border-radius: 5px;
     color: #F95151;
+    font-weight: 600;
+    padding: 0px 15px;
+}
+.sub2{
+    border: 2px solid #f8be00aa;
+    border-radius: 5px;
+    color: #f39e00;
     font-weight: 600;
     padding: 0px 15px;
 }
@@ -193,6 +195,9 @@ select{
     text-align: center;
     transform: translateY(100%);
 }
+/* .yearselect{
+    width: 100px;
+} */
 
 /* includeFile:
 header
